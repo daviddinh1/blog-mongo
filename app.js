@@ -2,13 +2,12 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const connectDB = require("./db/connectDb");
+const routes = require("./routes/index");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.send("hello world we are testing the backend");
-});
+app.use("/", routes);
 
 (async () => {
   try {
